@@ -54,16 +54,19 @@ class SourceImages(Frame):
 class Spread(Frame):
 
     def __init__(self, master=None):
-        super().__init__(master, padx=10, pady=5)
+        super().__init__(master, bg='yellow', padx=10, pady=5)
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.columnconfigure(2, weight=1)
         self.create_widgets()
 
     def create_widgets(self):
         self.preview = ImageFrame(self, text='Original')
         self.cropped = ImageFrame(self, text='Cropped')
         self.marked = ImageFrame(self, text='Marked')
-        self.preview.pack(side=LEFT)
-        self.cropped.pack(side=LEFT)
-        self.marked.pack(side=RIGHT)
+        self.preview.grid(row=0, column=0, sticky='ew')
+        self.cropped.grid(row=0, column=1, sticky='ew')
+        self.marked.grid(row=0, column=2, sticky='ew')
 
 
 class ImageFrame(Frame):
